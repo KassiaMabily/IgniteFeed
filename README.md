@@ -21,7 +21,7 @@
 
 ## 💻 Overview
 
-<img src="./src/assets/Capa.png" alt="Ignite Feed" />
+<img src="./src/assets/capa.png" alt="Ignite Feed" />
 
 ---
 ## ✅ Features
