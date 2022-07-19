@@ -27,8 +27,16 @@ export function Post({ author, content, publishedAt }) {
     setNewCommentText("");
   }
 
-  function handleNewComentChange() {
+  function handleNewCommentChange() {
     setNewCommentText(event.target.value);
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete
+    })
+
+    setComments(commentsWithoutDeletedOne);
   }
 
   return (
@@ -52,9 +60,9 @@ export function Post({ author, content, publishedAt }) {
         {
           content.map(line => {
             if(line.type === 'paragraph') {
-              return <p>{line.content}</p>
+              return <p key={line}>{line.content}</p>
             } else if(line.type === 'link') {
-              return <p><a href='#'>{line.content}</a></p>
+              return <p key={line}><a href='#'>{line.content}</a></p>
             }
           })
         }
@@ -68,7 +76,7 @@ export function Post({ author, content, publishedAt }) {
         <textarea
           placeholder='Deixe um comentario'
           name="comment"
-          onChange={handleNewComentChange}
+          onChange={handleNewCommentChange}
           value={newCommentText}
         />
 
@@ -81,8 +89,12 @@ export function Post({ author, content, publishedAt }) {
 
       <div className={styles.commentList}>
         {
-          comments.map((comment) => (
-            <Comment content={comment} />
+          comments.map(comment => (
+            <Comment
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
           ))
         }
       </div>

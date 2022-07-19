@@ -29,7 +29,7 @@ const posts = [
     publishedAt: new Date('2022-07-03 20:00:00')
   },
   {
-    id: 1,
+    id: 2,
     author: {
       avatarUrl: 'https://github.com/diego3g.png',
       name: 'Diego Fernandes',
